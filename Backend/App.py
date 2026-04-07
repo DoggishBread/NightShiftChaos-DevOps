@@ -122,7 +122,7 @@ def main():
 
             # Tabla de datos
             st.subheader("Registros en base de datos")
-            st.dataframe(df, use_container_width=True)
+            st.dataframe(df, width="stretch")
             
         else:
             st.info("Esperando datos... Utiliza el panel lateral para insertar registros.")

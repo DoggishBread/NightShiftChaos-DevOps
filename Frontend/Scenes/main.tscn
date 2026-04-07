@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ciidfnkx3pt0q"]
+[gd_scene load_steps=29 format=3 uid="uid://ciidfnkx3pt0q"]
 
 [ext_resource type="PackedScene" uid="uid://dpm7j4jk1bqc2" path="res://Scenes/player.tscn" id="3_cegan"]
 [ext_resource type="Script" uid="uid://mbmt7bfef5nf" path="res://scripts/game_manager.gd" id="3_jkdf5"]
@@ -33,6 +33,22 @@ tonemap_mode = 2
 [sub_resource type="NavigationMesh" id="NavigationMesh_vvmd2"]
 vertices = PackedVector3Array(-2.0500002, 0.45, -3.3000002, -1.8000002, 0.45, -1.5500002, -1.5500002, 0.45, -3.0500002, -3.5500002, 0.45, -4.05, -4.05, 0.45, -3.5500002, -4.05, 0.45, -3.0500002, 3.1999998, 0.45, -3.0500002, 4.2, 0.45, -2.8000002, 4.2, 0.45, -4.05, 0.6999998, 0.45, -1.5500002, 0.9499998, 0.45, -1.5500002, 0.9499998, 0.45, -3.0500002, 0.4499998, 0.45, -3.3000002, -0.05000019, 0.45, -1.3000002, -0.3000002, 0.45, 1.1999998, 3.6999998, 0.45, 0.9499998, 2.9499998, 0.45, -1.3000002, 3.9499998, 0.45, 2.6999998, -4.05, 0.45, 2.6999998, -4.05, 0.45, 3.9499998, 4.2, 0.45, 3.9499998, -2.5500002, 1.7, -0.5500002, -2.5500002, 1.7, -0.05000019, -1.0500002, 1.7, -0.05000019, -1.0500002, 1.7, -0.5500002)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 0), PackedInt32Array(6, 8, 7), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(0, 3, 12), PackedInt32Array(12, 3, 8), PackedInt32Array(11, 12, 6), PackedInt32Array(6, 12, 8), PackedInt32Array(0, 12, 2), PackedInt32Array(9, 10, 13), PackedInt32Array(13, 10, 16), PackedInt32Array(13, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(6, 7, 16), PackedInt32Array(16, 7, 15), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 20), PackedInt32Array(17, 15, 20), PackedInt32Array(20, 15, 7), PackedInt32Array(24, 23, 21), PackedInt32Array(21, 23, 22)]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h1bgf"]
+emission_shape_scale = Vector3(0.35, 0.1, 0.25)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3802"]
+transparency = 1
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_fevyy"]
+material = SubResource("StandardMaterial3D_b3802")
+size = Vector2(0.1, 0.1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_vvmd2"]
 
@@ -306,6 +322,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
 
 [node name="wall-window10" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5)
+
+[node name="VFX" type="Node" parent="."]
+
+[node name="Frio" type="Node3D" parent="VFX"]
+
+[node name="Neblina" type="GPUParticles3D" parent="VFX/Frio"]
+
+[node name="Destellos" type="GPUParticles3D" parent="VFX/Frio"]
+
+[node name="Nieve" type="GPUParticles3D" parent="VFX/Frio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9962063, 0.24907285, 0)
+process_material = SubResource("ParticleProcessMaterial_h1bgf")
+draw_pass_1 = SubResource("QuadMesh_fevyy")
+
+[node name="Dinero" type="Node3D" parent="VFX"]
 
 [node name="HitboxesParedes" type="Node" parent="."]
 
