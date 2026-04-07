@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpm7j4jk1bqc2"]
+
+[ext_resource type="Script" uid="uid://d3abc6gfqrgy" path="res://scripts/jugador.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://bq5rd1wpulp82" path="res://Textures/Kit_Minimarket/character-employee.glb" id="2_i3pqv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hqtel"]
+radius = 0.3
+height = 0.8
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.07121682)
+script = ExtResource("1_onrkg")
+
+[node name="character-employee2" parent="." instance=ExtResource("2_i3pqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.033, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032575607, 0.4, -0.07856035)
+shape = SubResource("CapsuleShape3D_hqtel")

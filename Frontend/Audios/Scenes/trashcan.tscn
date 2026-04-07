@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8fyv4ucrg72t"]
+
+[ext_resource type="PackedScene" uid="uid://di273pevc31gt" path="res://Textures/kit_basura/trash.glb" id="1_3aa6p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3aa6p"]
+size = Vector3(0.44656372, 0.4980774, 0.4441223)
+
+[node name="trashcan" type="Node3D"]
+
+[node name="trash" parent="." instance=ExtResource("1_3aa6p")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1.0000012, 0, 0, 0, 1, 0, 0, 0, 1.0000012, 0.0016021747, 0.2509613, 0.002822875)
+shape = SubResource("BoxShape3D_3aa6p")

@@ -1,11 +1,10 @@
 import streamlit as st
 import sqlite3
 import pandas as pd
-import random
 import time
 from datetime import datetime
 
-# CONFIGURACIÓN DE BASE DE DATOS
+# CONFIGURACION DE BASE DE DATOS
 def init_db():
     conn = sqlite3.connect('NSC_final.db')
     c = conn.cursor()
@@ -20,7 +19,7 @@ def init_db():
     conn.commit()
     conn.close()
 
-# LÓGICA DE PROCESAMIENTO
+# LOGICA DE PROCESAMIENTO
 def calcular_puntaje(ventas, errores):
     puntaje = (ventas * 100) - (errores * 50)
     if puntaje < 0: puntaje = 0
@@ -39,7 +38,7 @@ def guardar_resultado(usuario, ventas, errores, puntaje):
 def main():
     st.set_page_config(page_title="Dashboard DevOps - Night Shift Chaos")
     
-    st.title("Dashboard de telemetría: Night Shift Chaos")
+    st.title("Dashboard de telemetria: Night Shift Chaos")
     st.markdown("### Sistema de procesamiento de datos y monitoreo")
 
     # Inicializar DB al arrancar
@@ -48,21 +47,8 @@ def main():
     # CONTROLES
     st.sidebar.header("Panel de control")
 
-    # MODO SIMULACIÓN
-    st.sidebar.header("1. Simulador de tráfico")
-    if st.sidebar.button("Simular partida nueva"):
-        with st.spinner('Procesando datos del servidor...'):
-            time.sleep(0.5) # simular latencia
-            ventas = random.randint(5, 50)
-            errores = random.randint(0, 20)
-            puntaje = calcular_puntaje(ventas, errores)
-            guardar_resultado("BOT_Server", ventas, errores, puntaje)
-        st.sidebar.success(f"Simulación guardada. Score: {puntaje}")
-
-    st.sidebar.markdown("---")
-
     # MODO MANUAL
-    st.sidebar.subheader("2. Insertar datos manualmente")
+    st.sidebar.subheader("1. Insertar datos manualmente")
     with st.sidebar.form("manual_form"):
         st.write("Registrar partida:")
         user_input = st.text_input("ID Usuario", "Admin")
@@ -75,35 +61,56 @@ def main():
             puntaje_manual = calcular_puntaje(ventas_input, errores_input)
             guardar_resultado(user_input, ventas_input, errores_input, puntaje_manual)
             st.success("Registro insertado correctamente")
-            time.sleep(1) # Pausa para que de tiempo de que se vea el mensaje
+            time.sleep(1)
             st.rerun()
 
     st.sidebar.markdown("---")
 
-    # BOTÓN PARA RESETEAR LA BASE DE DATOS
-    if st.sidebar.button("Resetear base de datos"):
+    # BORRAR UN SOLO REGISTRO
+    st.sidebar.subheader("2. Borrar registro especifico")
+    with st.sidebar.form("delete_form"):
+        st.write("Eliminar por ID:")
+        id_borrar = st.number_input("ID del registro a borrar", min_value=0, step=1)
+        btn_borrar = st.form_submit_button("Borrar registro")
+
+        if btn_borrar:
+            conn = sqlite3.connect('NSC_final.db')
+            c = conn.cursor()
+            c.execute("DELETE FROM partidas WHERE id = ?", (id_borrar,))
+            conn.commit()
+            conn.close()
+            st.success(f"Registro {id_borrar} eliminado.")
+            time.sleep(1)
+            st.rerun()
+
+    st.sidebar.markdown("---")
+
+    # BOTON PARA RESETEAR LA BASE DE DATOS
+    st.sidebar.subheader("3. Opciones avanzadas")
+    if st.sidebar.button("Resetear base de datos completa"):
         conn = sqlite3.connect('NSC_final.db')
         c = conn.cursor()
         c.execute("DELETE FROM partidas")
         conn.commit()
         conn.close()
         st.sidebar.warning("Base de datos reseteada.")
+        time.sleep(1)
         st.rerun()
     
-    # VISUALIZACIÓN DE DATOS
+    # VISUALIZACION DE DATOS
     conn = sqlite3.connect('NSC_final.db')
     try:
         df = pd.read_sql_query("SELECT * FROM partidas ORDER BY id DESC", conn)
         
         if not df.empty:
-            # Métricas
+            # Metricas
             col1, col2, col3, col4 = st.columns(4)
             col1.metric("Partidas totales", len(df))
-            col2.metric("Récord de puntaje", df['puntaje'].max())
-            col3.metric("Total ventas", df['ventas'].sum())
-            col4.metric("Último usuario", df.iloc[0]['usuario'])
+            col2.metric("Record de puntaje", df['puntaje'].max())
+            col3.metric("Total ventas", int(df['ventas'].sum()))
+            col4.metric("Ultimo usuario", df.iloc[0]['usuario'])
 
-            # Gráficas
+            # Graficas
             col_chart1, col_chart2 = st.columns(2)
             with col_chart1:
                 st.subheader("Rendimiento por partida")
@@ -121,9 +128,13 @@ def main():
             st.info("Esperando datos... Utiliza el panel lateral para insertar registros.")
             
     except Exception as e:
-        st.error(f"Error de conexión: {e}")
+        st.error(f"Error de conexion: {e}")
     finally:
         conn.close()
+
+    # REFRESCO AUTOMATICO
+    time.sleep(10)
+    st.rerun()
 
 if __name__ == '__main__':
     main()
