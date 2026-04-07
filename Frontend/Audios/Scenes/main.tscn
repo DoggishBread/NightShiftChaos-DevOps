@@ -1,0 +1,397 @@
+[gd_scene load_steps=29 format=3 uid="uid://ciidfnkx3pt0q"]
+
+[ext_resource type="PackedScene" uid="uid://dpm7j4jk1bqc2" path="res://Scenes/player.tscn" id="3_cegan"]
+[ext_resource type="Script" uid="uid://mbmt7bfef5nf" path="res://scripts/game_manager.gd" id="3_jkdf5"]
+[ext_resource type="PackedScene" uid="uid://ciohuvhr54ijk" path="res://Scenes/caja_registradora.tscn" id="4_82xsv"]
+[ext_resource type="AudioStream" uid="uid://mur3mdrcgsma" path="res://Audios/money-soundfx.mp3" id="4_k12tt"]
+[ext_resource type="Script" uid="uid://cohc7yypl8313" path="res://scripts/node.gd" id="5_getpj"]
+[ext_resource type="AudioStream" uid="uid://b6jxqeb21deb1" path="res://Audios/error_CDOxCYm.mp3" id="5_h1bgf"]
+[ext_resource type="PackedScene" uid="uid://c2em3ix3p1ldc" path="res://Textures/Kit_Minimarket/wall-corner.glb" id="6_ryguw"]
+[ext_resource type="PackedScene" uid="uid://dko1wuci4cvkx" path="res://Scenes/shelf_end.tscn" id="6_wsu2k"]
+[ext_resource type="PackedScene" uid="uid://dy4fy3xb3ov3v" path="res://Textures/Kit_Minimarket/wall.glb" id="7_d13ii"]
+[ext_resource type="PackedScene" uid="uid://dhdrb0timdwcv" path="res://Textures/Kit_Minimarket/wall-window.glb" id="8_1u8w0"]
+[ext_resource type="PackedScene" uid="uid://dpsc3evxmqwnk" path="res://Textures/Kit_Minimarket/wall-door-rotate.glb" id="9_0odxb"]
+[ext_resource type="PackedScene" uid="uid://c8fyv4ucrg72t" path="res://Scenes/trashcan.tscn" id="10_k12tt"]
+[ext_resource type="PackedScene" uid="uid://bmr22mpf4uvv0" path="res://Scenes/vertical_freezer.tscn" id="13_qsp4k"]
+[ext_resource type="PackedScene" uid="uid://bivasgmtrtnmb" path="res://Scenes/shelf_bags.tscn" id="14_kq58d"]
+[ext_resource type="PackedScene" uid="uid://bxg3bcupala6c" path="res://Scenes/shelf_boxes.tscn" id="15_seu75"]
+[ext_resource type="PackedScene" uid="uid://bmv83ygibjrpy" path="res://Scenes/freezer.tscn" id="16_htxhm"]
+[ext_resource type="AudioStream" uid="uid://cf003x78ollld" path="res://Audios/BASE.mp3" id="17_h1bgf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_per8v"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_wlxy5"]
+sky_material = SubResource("ProceduralSkyMaterial_per8v")
+
+[sub_resource type="Environment" id="Environment_vvmd2"]
+background_mode = 2
+sky = SubResource("Sky_wlxy5")
+tonemap_mode = 2
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_vvmd2"]
+vertices = PackedVector3Array(-2.0500002, 0.45, -3.3000002, -1.8000002, 0.45, -1.5500002, -1.5500002, 0.45, -3.0500002, -3.5500002, 0.45, -4.05, -4.05, 0.45, -3.5500002, -4.05, 0.45, -3.0500002, 3.1999998, 0.45, -3.0500002, 4.2, 0.45, -2.8000002, 4.2, 0.45, -4.05, 0.6999998, 0.45, -1.5500002, 0.9499998, 0.45, -1.5500002, 0.9499998, 0.45, -3.0500002, 0.4499998, 0.45, -3.3000002, -0.05000019, 0.45, -1.3000002, -0.3000002, 0.45, 1.1999998, 3.6999998, 0.45, 0.9499998, 2.9499998, 0.45, -1.3000002, 3.9499998, 0.45, 2.6999998, -4.05, 0.45, 2.6999998, -4.05, 0.45, 3.9499998, 4.2, 0.45, 3.9499998, -2.5500002, 1.7, -0.5500002, -2.5500002, 1.7, -0.05000019, -1.0500002, 1.7, -0.05000019, -1.0500002, 1.7, -0.5500002)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 0), PackedInt32Array(6, 8, 7), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(0, 3, 12), PackedInt32Array(12, 3, 8), PackedInt32Array(11, 12, 6), PackedInt32Array(6, 12, 8), PackedInt32Array(0, 12, 2), PackedInt32Array(9, 10, 13), PackedInt32Array(13, 10, 16), PackedInt32Array(13, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(6, 7, 16), PackedInt32Array(16, 7, 15), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 20), PackedInt32Array(17, 15, 20), PackedInt32Array(20, 15, 7), PackedInt32Array(24, 23, 21), PackedInt32Array(21, 23, 22)]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h1bgf"]
+emission_shape_scale = Vector3(0.35, 0.1, 0.25)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3802"]
+transparency = 1
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_fevyy"]
+material = SubResource("StandardMaterial3D_b3802")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_vvmd2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uot50"]
+size = Vector3(7.3876953, 1.7336426, 0.5038147)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qyfoh"]
+size = Vector3(1.2919922, 1.7093506, 0.5593262)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l0sm3"]
+size = Vector3(1.0930176, 1.9844971, 0.6029663)
+
+[node name="main" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("3_cegan")]
+collision_mask = 9
+
+[node name="Cosas Camara" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Cosas Camara"]
+transform = Transform3D(0.8365165, -0.54766774, 0.017337533, -0.05588579, -0.053799093, 0.9969867, -0.5450846, -0.8349647, -0.07561055, 4, 5, 0)
+light_color = Color(0.83137256, 1, 0.96862745, 1)
+light_energy = 0.372
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Cosas Camara"]
+environment = SubResource("Environment_vvmd2")
+
+[node name="Camera3D" type="Camera3D" parent="Cosas Camara"]
+transform = Transform3D(-1, 0, -8.742278e-08, -7.5710346e-08, 0.5, 0.86602545, 4.3711385e-08, 0.86602545, -0.5, 0, 5, -4.8)
+
+[node name="Contador de NPC" type="Node" parent="Cosas Camara/Camera3D"]
+script = ExtResource("5_getpj")
+
+[node name="Label" type="Label" parent="Cosas Camara/Camera3D/Contador de NPC"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Contador"
+
+[node name="ContadorFPS" type="Label" parent="Cosas Camara/Camera3D/Contador de NPC"]
+offset_left = 1.0
+offset_top = 25.0
+offset_right = 41.0
+offset_bottom = 48.0
+
+[node name="game_manager" type="Node" parent="."]
+script = ExtResource("3_jkdf5")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="game_manager"]
+
+[node name="SonidoCaja" type="AudioStreamPlayer" parent="game_manager"]
+stream = ExtResource("4_k12tt")
+volume_db = -12.0
+
+[node name="SonidoError" type="AudioStreamPlayer" parent="game_manager"]
+stream = ExtResource("5_h1bgf")
+volume_db = -12.0
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_vvmd2")
+
+[node name="Escenario" type="Node" parent="NavigationRegion3D"]
+
+[node name="Interactuables" type="Node" parent="NavigationRegion3D/Escenario"]
+
+[node name="Vertical freezers" type="Node" parent="NavigationRegion3D/Escenario/Interactuables"]
+
+[node name="vertical_freezer" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" instance=ExtResource("13_qsp4k")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.985076, 0.04766974, 4.4502916)
+
+[node name="vertical_freezer2" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" instance=ExtResource("13_qsp4k")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.9722867, 0.04766974, 4.4502916)
+
+[node name="vertical_freezer3" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" instance=ExtResource("13_qsp4k")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.95494974, 0.04766974, 4.4502916)
+
+[node name="vertical_freezer4" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" instance=ExtResource("13_qsp4k")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.99065113, 0.04766974, 4.4502916)
+
+[node name="vertical_freezer5" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" instance=ExtResource("13_qsp4k")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.009469, 0.04766974, 4.4502916)
+
+[node name="vertical_freezer6" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" instance=ExtResource("13_qsp4k")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.0207772, 0.04766974, 4.4502916)
+
+[node name="Shelf-bags" type="Node" parent="NavigationRegion3D/Escenario/Interactuables"]
+
+[node name="Shelf_bags" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags" instance=ExtResource("14_kq58d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="Shelf_bags2" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags" instance=ExtResource("14_kq58d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Shelf_bags3" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags" instance=ExtResource("14_kq58d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+
+[node name="Shelf-end" type="Node" parent="NavigationRegion3D/Escenario/Interactuables"]
+
+[node name="shelf-end" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-end" instance=ExtResource("6_wsu2k")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.28, 0.05, -0.8020965)
+
+[node name="shelf-end2" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-end" instance=ExtResource("6_wsu2k")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.28, 0.05, 0.19790351)
+
+[node name="Shelf-boxes" type="Node" parent="NavigationRegion3D/Escenario/Interactuables"]
+
+[node name="shelf-boxes" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes" instance=ExtResource("15_seu75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
+
+[node name="shelf-boxes2" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes" instance=ExtResource("15_seu75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="shelf-boxes3" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes" instance=ExtResource("15_seu75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+
+[node name="Freezer" type="Node" parent="NavigationRegion3D/Escenario/Interactuables"]
+
+[node name="freezer" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" instance=ExtResource("16_htxhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="freezer2" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" instance=ExtResource("16_htxhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8076935, 0, 0)
+
+[node name="freezer3" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" instance=ExtResource("16_htxhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6135142, 0, 0)
+
+[node name="freezer4" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" instance=ExtResource("16_htxhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -0.6040052)
+
+[node name="freezer5" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" instance=ExtResource("16_htxhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8076935, 0, -0.6040052)
+
+[node name="freezer6" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" instance=ExtResource("16_htxhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6135142, 0, -0.6040052)
+
+[node name="Cajas" type="Node" parent="NavigationRegion3D/Escenario/Interactuables"]
+
+[node name="CajaRegistradora" parent="NavigationRegion3D/Escenario/Interactuables/Cajas" instance=ExtResource("4_82xsv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2.5)
+
+[node name="CajaRegistradora2" parent="NavigationRegion3D/Escenario/Interactuables/Cajas" instance=ExtResource("4_82xsv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -2.5)
+
+[node name="CajaRegistradora3" parent="NavigationRegion3D/Escenario/Interactuables/Cajas" instance=ExtResource("4_82xsv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2.5)
+
+[node name="trashcan" parent="NavigationRegion3D/Escenario/Interactuables/Cajas" instance=ExtResource("10_k12tt")]
+transform = Transform3D(-0.48384753, 0, -0.8751523, 0, 1, 0, 0.8751523, 0, -0.48384753, -4.392365, 0, -4.392823)
+
+[node name="floor" type="CSGBox3D" parent="NavigationRegion3D/Escenario"]
+size = Vector3(10, 0.1, 10)
+
+[node name="Paredes" type="Node" parent="NavigationRegion3D/Escenario"]
+
+[node name="wall2" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -5)
+
+[node name="wall10" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -5)
+
+[node name="wall-corner3" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("6_ryguw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
+
+[node name="wall-corner6" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("6_ryguw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, -5)
+
+[node name="wall11" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, -4)
+
+[node name="wall12" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, -3)
+
+[node name="wall13" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, -2)
+
+[node name="wall14" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, -1)
+
+[node name="wall15" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, 0)
+
+[node name="wall16" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, 1)
+
+[node name="wall17" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, 2)
+
+[node name="wall18" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, 3)
+
+[node name="wall19" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, 4)
+
+[node name="wall-corner4" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("6_ryguw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, 5)
+
+[node name="wall3" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, -4)
+
+[node name="wall4" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, -3)
+
+[node name="wall5" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, -2)
+
+[node name="wall6" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, -1)
+
+[node name="wall7" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, 0)
+
+[node name="wall8" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, 1)
+
+[node name="wall9" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, 2)
+
+[node name="wall20" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, 3)
+
+[node name="wall21" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, 4)
+
+[node name="wall-corner5" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("6_ryguw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5, 0, 5)
+
+[node name="wall-window2" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4, 0, 5)
+
+[node name="wall-window3" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4, 0, 5)
+
+[node name="wall-window4" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 5)
+
+[node name="wall22" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1, 0, 5)
+
+[node name="wall23" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3, 0, 5)
+
+[node name="wall24" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 0, 5)
+
+[node name="wall25" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1, 0, 5)
+
+[node name="wall26" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, 5)
+
+[node name="wall27" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 0, 5)
+
+[node name="wall-door-rotate2" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("9_0odxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -5)
+
+[node name="wall-window5" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
+
+[node name="wall-window6" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
+
+[node name="wall-window7" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="wall-window8" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
+
+[node name="wall-window9" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
+
+[node name="wall-window10" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5)
+
+[node name="VFX" type="Node" parent="."]
+
+[node name="Frio" type="Node3D" parent="VFX"]
+
+[node name="Neblina" type="GPUParticles3D" parent="VFX/Frio"]
+
+[node name="Destellos" type="GPUParticles3D" parent="VFX/Frio"]
+
+[node name="Nieve" type="GPUParticles3D" parent="VFX/Frio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9962063, 0.24907285, 0)
+process_material = SubResource("ParticleProcessMaterial_h1bgf")
+draw_pass_1 = SubResource("QuadMesh_fevyy")
+
+[node name="Dinero" type="Node3D" parent="VFX"]
+
+[node name="HitboxesParedes" type="Node" parent="."]
+
+[node name="collision_floor" type="StaticBody3D" parent="HitboxesParedes"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_floor"]
+shape = SubResource("WorldBoundaryShape3D_vvmd2")
+
+[node name="collision_left_wall" type="StaticBody3D" parent="HitboxesParedes"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_left_wall"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 4.76591, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_vvmd2")
+
+[node name="collision_right_wall" type="StaticBody3D" parent="HitboxesParedes"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_right_wall"]
+transform = Transform3D(0.0022606584, 0.9999966, -0.0012844437, 0.999997, -0.002259404, 0.0009713156, 0.0009683923, -0.001286649, -0.9999987, -4.7677927, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_vvmd2")
+
+[node name="collision_back_wall" type="StaticBody3D" parent="HitboxesParedes"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_back_wall"]
+transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 0, 0, 4.7561984)
+shape = SubResource("WorldBoundaryShape3D_vvmd2")
+
+[node name="collision_front_1" type="StaticBody3D" parent="HitboxesParedes"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_front_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1811523, 0.44396973, -5.0001373)
+shape = SubResource("BoxShape3D_uot50")
+
+[node name="collision_front_2" type="StaticBody3D" parent="HitboxesParedes"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_front_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.145996, 0.44989014, -4.991089)
+shape = SubResource("BoxShape3D_qyfoh")
+
+[node name="collision_door" type="StaticBody3D" parent="HitboxesParedes"]
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0125759, 0.49224854, -4.986691)
+shape = SubResource("BoxShape3D_l0sm3")
+
+[node name="Extras" type="Node" parent="."]
+
+[node name="PuntoSpawn" type="Marker3D" parent="Extras"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -5)
+
+[node name="TimerSpawneo" type="Timer" parent="Extras"]
+wait_time = 6.0
+autostart = true
+
+[node name="MusicaFondo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_h1bgf")
+volume_db = -11.45
+autoplay = true

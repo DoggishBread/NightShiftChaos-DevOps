@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgd54ekf18x63"]
+
+[ext_resource type="Script" uid="uid://be0jr47nerksf" path="res://scripts/cliente.gd" id="1_hd6bx"]
+[ext_resource type="PackedScene" uid="uid://bqk1v8jgyn66t" path="res://Textures/kit_NPC/character-male-d.glb" id="2_mc5ak"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vo5fx"]
+radius = 0.3
+height = 0.95
+
+[node name="Cliente" type="CharacterBody3D"]
+script = ExtResource("1_hd6bx")
+
+[node name="character-male-d2" parent="." instance=ExtResource("2_mc5ak")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42499998, 0)
+shape = SubResource("CapsuleShape3D_vo5fx")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
