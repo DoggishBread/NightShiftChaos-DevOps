@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 8501 8000
 
-CMD ["sh", "-c", "python -m http.server 8000 --directory game_export & streamlit run App.py --server.port 8501 --server.address 0.0.0.0"]
+CMD ["sh", "-c", "python api.py & streamlit run App.py --server.port 8501 --server.address 0.0.0.0"]

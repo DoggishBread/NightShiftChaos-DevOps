@@ -17,13 +17,12 @@ func _on_body_exited(body):
 		jugador_cerca = false
 
 func _input(event):
-	# Si el jugador esta cerca y presiona Enter o Espacio
 	if jugador_cerca and event.is_action_pressed("ui_accept"):
 		enviar_compra()
 
 func enviar_compra():
 	print("Enviando transaccion a la base de datos...")
-	var url = "http://127.0.0.1:5000/comprar"
+	var url = "https://aplitic-rainily-karan.ngrok-free.dev/comprar"
 	
 	var datos = {
 		"producto": "Hamburguesa",

@@ -1,22 +1,22 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
 import sqlite3
 from datetime import datetime
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='game_export')
+CORS(app)
 DB_NAME = 'NSC_final.db'
 
 def init_db():
     conn = sqlite3.connect(DB_NAME, timeout=0.01)
     c = conn.cursor()
     
-    # Tabla para las compras individuales
     c.execute('''CREATE TABLE IF NOT EXISTS compras 
                  (id INTEGER PRIMARY KEY AUTOINCREMENT, 
                   fecha TEXT, 
                   producto TEXT, 
                   precio REAL)''')
                   
-    # Tabla para el historial del dashboard
     c.execute('''CREATE TABLE IF NOT EXISTS partidas 
                  (id INTEGER PRIMARY KEY AUTOINCREMENT, 
                   fecha TEXT,
@@ -28,6 +28,16 @@ def init_db():
     conn.commit()
     conn.close()
 
+# Rutas para servir el juego de Godot
+@app.route('/')
+def index():
+    return send_from_directory(app.static_folder, 'index.html')
+
+@app.route('/<path:path>')
+def serve_files(path):
+    return send_from_directory(app.static_folder, path)
+
+# Rutas de API
 @app.route('/comprar', methods=['POST'])
 def registrar_compra():
     try:
@@ -59,7 +69,6 @@ def guardar_partida():
     ventas = datos.get('ventas', 0)
     errores = datos.get('errores', 0)
     
-    # Calculamos el puntaje
     puntaje = (ventas * 100) - (errores * 50)
     if puntaje < 0: puntaje = 0
 
@@ -75,5 +84,4 @@ def guardar_partida():
 
 if __name__ == '__main__':
     init_db()
-    print("Servidor API de Night Shift Chaos corriendo en el puerto 5000...")
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=8000)
