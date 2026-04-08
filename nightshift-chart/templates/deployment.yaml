@@ -9,6 +9,13 @@ spec:
       app: nightshift
   template:
     metadata:
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+    spec:
+      containers:
+        - name: nightshift
+          image: nightshift-app:latest
+          imagePullPolicy: Never
       labels:
         app: nightshift
     spec:
