@@ -13,11 +13,9 @@ var guardando = false
 @onready var sonido_error = $SonidoError
 
 func _ready():
-	# Evita que el juego se cierre inmediatamente al darle a la X o Alt+F4
 	get_tree().set_auto_accept_quit(false)
 	timer_spawneo.timeout.connect(_on_timer_timeout)
 
-# Esta funcion de Godot detecta cuando la ventana intenta cerrarse o la pagina recargarse
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		enviar_partida_al_servidor()
@@ -30,11 +28,6 @@ func _on_timer_timeout():
 	contador_de_npc.addpoint()
 
 func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		ventas_acomuladas += 1
-		sonido_caja.play()
-		print("Venta registrada. Llevas: ", ventas_acomuladas)
-
 	if event.is_action_pressed("cometer_error"):
 		errores_acomulados += 1
 		sonido_error.play()
@@ -43,12 +36,15 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		enviar_partida_al_servidor()
 
+func registrar_venta():
+	ventas_acomuladas += 1
+	sonido_caja.play()
+	print("Venta registrada. Llevas: ", ventas_acomuladas)
+
 func enviar_partida_al_servidor():
-	# Si ya estamos guardando, evitamos mandar la peticion dos veces
 	if guardando:
 		return
 		
-	# Si no se hizo nada en la partida, salimos directo sin ensuciar la base de datos
 	if ventas_acomuladas == 0 and errores_acomulados == 0:
 		cerrar_o_reiniciar()
 		return
@@ -76,10 +72,14 @@ func _on_request_completed(result, response_code, headers, body):
 	cerrar_o_reiniciar()
 
 func cerrar_o_reiniciar():
-	# Detecta donde esta corriendo el juego
 	if OS.has_feature("web"):
 		print("Entorno web: Recargando nivel")
 		get_tree().reload_current_scene()
 	else:
 		print("Entorno escritorio: Cerrando juego")
 		get_tree().quit()
+
+func registrar_error_impaciencia():
+	errores_acomulados += 1
+	sonido_error.play()
+	print("¡Un cliente se hartó de esperar y se fue! Errores: ", errores_acomulados)

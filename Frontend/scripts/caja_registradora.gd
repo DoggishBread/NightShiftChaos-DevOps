@@ -1,7 +1,10 @@
 extends Area3D
 
 @onready var http_request = $HTTPRequest
+@onready var game_manager = get_node("/root/main/game_manager")
+
 var jugador_cerca = false
+var cliente_en_caja = null
 
 func _ready():
 	body_entered.connect(_on_body_entered)
@@ -10,15 +13,28 @@ func _ready():
 func _on_body_entered(body):
 	if body.name == "Player":
 		jugador_cerca = true
-		print("Presiona ACEPTAR para procesar la venta")
+		print("Cajero en posicion.")
+	elif body.has_method("atender_cliente") and body.estado_actual == body.Estado.IR_A_CAJA:
+		body.estado_actual = body.Estado.ESPERAR_PAGO
+		cliente_en_caja = body
+		print("Cliente en caja listo para pagar.")
 
 func _on_body_exited(body):
 	if body.name == "Player":
 		jugador_cerca = false
+	elif body == cliente_en_caja:
+		cliente_en_caja = null
 
 func _input(event):
+	# Solo ejecutamos acciones si el cajero esta en esta caja especifica
 	if jugador_cerca and event.is_action_pressed("ui_accept"):
-		enviar_compra()
+		if cliente_en_caja != null:
+			game_manager.registrar_venta()
+			enviar_compra()
+			cliente_en_caja.atender_cliente()
+			cliente_en_caja = null
+		else:
+			print("No hay clientes esperando en esta caja.")
 
 func enviar_compra():
 	print("Enviando transaccion a la base de datos...")
