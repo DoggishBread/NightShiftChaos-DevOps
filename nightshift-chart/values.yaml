@@ -1,0 +1,11 @@
+replicaCount: 1
+
+image:
+  repository: nightshift-app
+  pullPolicy: Never
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  gamePort: 8000
+  dashboardPort: 8501

@@ -1,0 +1,21 @@
+name: Integracion continua (CI)
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Obtener el código del repositorio
+        uses: actions/checkout@v4
+
+      - name: Construir y cargar imagen en Minikube
+        working-directory: ./Backend
+        run: |
+          docker build -t nightshift-app:latest .
+          
+          minikube image load nightshift-app:latest --overwrite=true

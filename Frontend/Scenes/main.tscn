@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ciidfnkx3pt0q"]
+[gd_scene format=3 uid="uid://ciidfnkx3pt0q"]
 
 [ext_resource type="PackedScene" uid="uid://dpm7j4jk1bqc2" path="res://Scenes/player.tscn" id="3_cegan"]
 [ext_resource type="Script" uid="uid://mbmt7bfef5nf" path="res://scripts/game_manager.gd" id="3_jkdf5"]
@@ -61,337 +61,385 @@ size = Vector3(1.2919922, 1.7093506, 0.5593262)
 [sub_resource type="BoxShape3D" id="BoxShape3D_l0sm3"]
 size = Vector3(1.0930176, 1.9844971, 0.6029663)
 
-[node name="main" type="Node3D"]
+[node name="main" type="Node3D" unique_id=1310042051]
 
-[node name="Player" parent="." instance=ExtResource("3_cegan")]
+[node name="Player" parent="." unique_id=62269356 instance=ExtResource("3_cegan")]
 collision_mask = 9
 
-[node name="Cosas Camara" type="Node" parent="."]
+[node name="Cosas Camara" type="Node" parent="." unique_id=200016813]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Cosas Camara"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Cosas Camara" unique_id=10097470]
 transform = Transform3D(0.8365165, -0.54766774, 0.017337533, -0.05588579, -0.053799093, 0.9969867, -0.5450846, -0.8349647, -0.07561055, 4, 5, 0)
 light_color = Color(0.83137256, 1, 0.96862745, 1)
 light_energy = 0.372
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Cosas Camara"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Cosas Camara" unique_id=1360671906]
 environment = SubResource("Environment_vvmd2")
 
-[node name="Camera3D" type="Camera3D" parent="Cosas Camara"]
+[node name="Camera3D" type="Camera3D" parent="Cosas Camara" unique_id=713926549]
 transform = Transform3D(-1, 0, -8.742278e-08, -7.5710346e-08, 0.5, 0.86602545, 4.3711385e-08, 0.86602545, -0.5, 0, 5, -4.8)
 
-[node name="Contador de NPC" type="Node" parent="Cosas Camara/Camera3D"]
+[node name="Contador de NPC" type="Node" parent="Cosas Camara/Camera3D" unique_id=1696520507]
 script = ExtResource("5_getpj")
 
-[node name="Label" type="Label" parent="Cosas Camara/Camera3D/Contador de NPC"]
+[node name="Label" type="Label" parent="Cosas Camara/Camera3D/Contador de NPC" unique_id=267516226]
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Contador"
 
-[node name="ContadorFPS" type="Label" parent="Cosas Camara/Camera3D/Contador de NPC"]
+[node name="ContadorFPS" type="Label" parent="Cosas Camara/Camera3D/Contador de NPC" unique_id=1056327303]
 offset_left = 1.0
 offset_top = 25.0
 offset_right = 41.0
 offset_bottom = 48.0
 
-[node name="game_manager" type="Node" parent="."]
+[node name="game_manager" type="Node" parent="." unique_id=1863375036]
 script = ExtResource("3_jkdf5")
 
-[node name="HTTPRequest" type="HTTPRequest" parent="game_manager"]
+[node name="HTTPRequest" type="HTTPRequest" parent="game_manager" unique_id=1901742328]
 
-[node name="SonidoCaja" type="AudioStreamPlayer" parent="game_manager"]
+[node name="SonidoCaja" type="AudioStreamPlayer" parent="game_manager" unique_id=626127853]
 stream = ExtResource("4_k12tt")
 volume_db = -12.0
 
-[node name="SonidoError" type="AudioStreamPlayer" parent="game_manager"]
+[node name="SonidoError" type="AudioStreamPlayer" parent="game_manager" unique_id=374400480]
 stream = ExtResource("5_h1bgf")
 volume_db = -12.0
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=610564129]
 navigation_mesh = SubResource("NavigationMesh_vvmd2")
 
-[node name="Escenario" type="Node" parent="NavigationRegion3D"]
+[node name="Escenario" type="Node" parent="NavigationRegion3D" unique_id=1040358535]
 
-[node name="Interactuables" type="Node" parent="NavigationRegion3D/Escenario"]
+[node name="Interactuables" type="Node" parent="NavigationRegion3D/Escenario" unique_id=250030708]
 
-[node name="Vertical freezers" type="Node" parent="NavigationRegion3D/Escenario/Interactuables"]
+[node name="Vertical freezers" type="Node" parent="NavigationRegion3D/Escenario/Interactuables" unique_id=939381309]
 
-[node name="vertical_freezer" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" instance=ExtResource("13_qsp4k")]
+[node name="vertical_freezer" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" unique_id=118463298 instance=ExtResource("13_qsp4k")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.985076, 0.04766974, 4.4502916)
 
-[node name="vertical_freezer2" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" instance=ExtResource("13_qsp4k")]
+[node name="vertical_freezer2" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" unique_id=1107941291 instance=ExtResource("13_qsp4k")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.9722867, 0.04766974, 4.4502916)
 
-[node name="vertical_freezer3" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" instance=ExtResource("13_qsp4k")]
+[node name="vertical_freezer3" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" unique_id=2081017075 instance=ExtResource("13_qsp4k")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.95494974, 0.04766974, 4.4502916)
 
-[node name="vertical_freezer4" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" instance=ExtResource("13_qsp4k")]
+[node name="vertical_freezer4" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" unique_id=613065041 instance=ExtResource("13_qsp4k")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.99065113, 0.04766974, 4.4502916)
 
-[node name="vertical_freezer5" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" instance=ExtResource("13_qsp4k")]
+[node name="vertical_freezer5" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" unique_id=1343042323 instance=ExtResource("13_qsp4k")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.009469, 0.04766974, 4.4502916)
 
-[node name="vertical_freezer6" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" instance=ExtResource("13_qsp4k")]
+[node name="vertical_freezer6" parent="NavigationRegion3D/Escenario/Interactuables/Vertical freezers" unique_id=76920833 instance=ExtResource("13_qsp4k")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3.0207772, 0.04766974, 4.4502916)
 
-[node name="Shelf-bags" type="Node" parent="NavigationRegion3D/Escenario/Interactuables"]
+[node name="Shelf-bags" type="Node" parent="NavigationRegion3D/Escenario/Interactuables" unique_id=229757663]
 
-[node name="Shelf_bags" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags" instance=ExtResource("14_kq58d")]
+[node name="Shelf_bags" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags" unique_id=1690582528 instance=ExtResource("14_kq58d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
 
-[node name="Shelf_bags2" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags" instance=ExtResource("14_kq58d")]
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags/Shelf_bags" unique_id=2098149335 groups=["waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.41849208)
+
+[node name="Marker3D2" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags/Shelf_bags" unique_id=1994489853 groups=["waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.43662786)
+
+[node name="Shelf_bags2" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags" unique_id=1879702022 instance=ExtResource("14_kq58d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 
-[node name="Shelf_bags3" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags" instance=ExtResource("14_kq58d")]
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags/Shelf_bags2" unique_id=629237822 groups=["waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.41849208)
+
+[node name="Marker3D2" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags/Shelf_bags2" unique_id=249083030 groups=["waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.43662786)
+
+[node name="Shelf_bags3" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags" unique_id=1713939657 instance=ExtResource("14_kq58d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
 
-[node name="Shelf-end" type="Node" parent="NavigationRegion3D/Escenario/Interactuables"]
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags/Shelf_bags3" unique_id=1062731132 groups=["waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.41849208)
 
-[node name="shelf-end" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-end" instance=ExtResource("6_wsu2k")]
+[node name="Marker3D2" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-bags/Shelf_bags3" unique_id=644769696 groups=["waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.43662786)
+
+[node name="Shelf-end" type="Node" parent="NavigationRegion3D/Escenario/Interactuables" unique_id=843344561]
+
+[node name="shelf-end" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-end" unique_id=691809600 instance=ExtResource("6_wsu2k")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.28, 0.05, -0.8020965)
 
-[node name="shelf-end2" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-end" instance=ExtResource("6_wsu2k")]
+[node name="shelf-end2" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-end" unique_id=1480708224 instance=ExtResource("6_wsu2k")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.28, 0.05, 0.19790351)
 
-[node name="Shelf-boxes" type="Node" parent="NavigationRegion3D/Escenario/Interactuables"]
+[node name="Shelf-boxes" type="Node" parent="NavigationRegion3D/Escenario/Interactuables" unique_id=1052195828]
 
-[node name="shelf-boxes" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes" instance=ExtResource("15_seu75")]
+[node name="shelf-boxes" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes" unique_id=1505702498 instance=ExtResource("15_seu75")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
 
-[node name="shelf-boxes2" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes" instance=ExtResource("15_seu75")]
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes/shelf-boxes" unique_id=337456372 groups=["waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.41849208)
+
+[node name="Marker3D2" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes/shelf-boxes" unique_id=553149403 groups=["waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.43662786)
+
+[node name="shelf-boxes2" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes" unique_id=721366956 instance=ExtResource("15_seu75")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
 
-[node name="shelf-boxes3" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes" instance=ExtResource("15_seu75")]
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes/shelf-boxes2" unique_id=367963936 groups=["waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.41849208)
+
+[node name="Marker3D2" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes/shelf-boxes2" unique_id=1500498937 groups=["waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.43662786)
+
+[node name="shelf-boxes3" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes" unique_id=1996607372 instance=ExtResource("15_seu75")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
 
-[node name="Freezer" type="Node" parent="NavigationRegion3D/Escenario/Interactuables"]
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes/shelf-boxes3" unique_id=1108033412 groups=["waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.41849208)
 
-[node name="freezer" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" instance=ExtResource("16_htxhm")]
+[node name="Marker3D2" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Shelf-boxes/shelf-boxes3" unique_id=949634455 groups=["waypoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.43662786)
+
+[node name="Freezer" type="Node" parent="NavigationRegion3D/Escenario/Interactuables" unique_id=585353007]
+
+[node name="freezer" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" unique_id=1305201904 instance=ExtResource("16_htxhm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
-[node name="freezer2" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" instance=ExtResource("16_htxhm")]
+[node name="freezer2" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" unique_id=113877978 instance=ExtResource("16_htxhm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8076935, 0, 0)
 
-[node name="freezer3" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" instance=ExtResource("16_htxhm")]
+[node name="freezer3" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" unique_id=1930943465 instance=ExtResource("16_htxhm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6135142, 0, 0)
 
-[node name="freezer4" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" instance=ExtResource("16_htxhm")]
+[node name="freezer4" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" unique_id=819437548 instance=ExtResource("16_htxhm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -0.6040052)
 
-[node name="freezer5" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" instance=ExtResource("16_htxhm")]
+[node name="freezer5" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" unique_id=2136018533 instance=ExtResource("16_htxhm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8076935, 0, -0.6040052)
 
-[node name="freezer6" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" instance=ExtResource("16_htxhm")]
+[node name="freezer6" parent="NavigationRegion3D/Escenario/Interactuables/Freezer" unique_id=505968462 instance=ExtResource("16_htxhm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6135142, 0, -0.6040052)
 
-[node name="Cajas" type="Node" parent="NavigationRegion3D/Escenario/Interactuables"]
+[node name="Cajas" type="Node" parent="NavigationRegion3D/Escenario/Interactuables" unique_id=1802098013]
 
-[node name="CajaRegistradora" parent="NavigationRegion3D/Escenario/Interactuables/Cajas" instance=ExtResource("4_82xsv")]
+[node name="CajaRegistradora" parent="NavigationRegion3D/Escenario/Interactuables/Cajas" unique_id=498814881 instance=ExtResource("4_82xsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2.5)
 
-[node name="CajaRegistradora2" parent="NavigationRegion3D/Escenario/Interactuables/Cajas" instance=ExtResource("4_82xsv")]
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Cajas/CajaRegistradora" unique_id=598388076 groups=["caja_registradora"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6496279, 0, 0)
+
+[node name="CajaRegistradora2" parent="NavigationRegion3D/Escenario/Interactuables/Cajas" unique_id=344152678 instance=ExtResource("4_82xsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -2.5)
 
-[node name="CajaRegistradora3" parent="NavigationRegion3D/Escenario/Interactuables/Cajas" instance=ExtResource("4_82xsv")]
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Cajas/CajaRegistradora2" unique_id=1505947930 groups=["caja_registradora"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6496279, 0, 0)
+
+[node name="CajaRegistradora3" parent="NavigationRegion3D/Escenario/Interactuables/Cajas" unique_id=746513221 instance=ExtResource("4_82xsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2.5)
 
-[node name="trashcan" parent="NavigationRegion3D/Escenario/Interactuables/Cajas" instance=ExtResource("10_k12tt")]
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D/Escenario/Interactuables/Cajas/CajaRegistradora3" unique_id=1292267837 groups=["caja_registradora"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6496279, 0, 0)
+
+[node name="trashcan" parent="NavigationRegion3D/Escenario/Interactuables/Cajas" unique_id=604428781 instance=ExtResource("10_k12tt")]
 transform = Transform3D(-0.48384753, 0, -0.8751523, 0, 1, 0, 0.8751523, 0, -0.48384753, -4.392365, 0, -4.392823)
 
-[node name="floor" type="CSGBox3D" parent="NavigationRegion3D/Escenario"]
+[node name="floor" type="CSGBox3D" parent="NavigationRegion3D/Escenario" unique_id=1021632908]
 size = Vector3(10, 0.1, 10)
 
-[node name="Paredes" type="Node" parent="NavigationRegion3D/Escenario"]
+[node name="Paredes" type="Node" parent="NavigationRegion3D/Escenario" unique_id=988418584]
 
-[node name="wall2" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall2" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1738673931 instance=ExtResource("7_d13ii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -5)
 
-[node name="wall10" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall10" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1128405126 instance=ExtResource("7_d13ii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -5)
 
-[node name="wall-corner3" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("6_ryguw")]
+[node name="wall-corner3" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1530997128 instance=ExtResource("6_ryguw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
 
-[node name="wall-corner6" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("6_ryguw")]
+[node name="wall-corner6" parent="NavigationRegion3D/Escenario/Paredes" unique_id=2109503201 instance=ExtResource("6_ryguw")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, -5)
 
-[node name="wall11" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall11" parent="NavigationRegion3D/Escenario/Paredes" unique_id=396594011 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, -4)
 
-[node name="wall12" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall12" parent="NavigationRegion3D/Escenario/Paredes" unique_id=207149769 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, -3)
 
-[node name="wall13" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall13" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1930711759 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, -2)
 
-[node name="wall14" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall14" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1962399152 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, -1)
 
-[node name="wall15" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall15" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1821837224 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, 0)
 
-[node name="wall16" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall16" parent="NavigationRegion3D/Escenario/Paredes" unique_id=625432757 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, 1)
 
-[node name="wall17" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall17" parent="NavigationRegion3D/Escenario/Paredes" unique_id=825497894 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, 2)
 
-[node name="wall18" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall18" parent="NavigationRegion3D/Escenario/Paredes" unique_id=72331104 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, 3)
 
-[node name="wall19" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall19" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1297964749 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, 4)
 
-[node name="wall-corner4" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("6_ryguw")]
+[node name="wall-corner4" parent="NavigationRegion3D/Escenario/Paredes" unique_id=459864909 instance=ExtResource("6_ryguw")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, 5)
 
-[node name="wall3" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall3" parent="NavigationRegion3D/Escenario/Paredes" unique_id=512172138 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, -4)
 
-[node name="wall4" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall4" parent="NavigationRegion3D/Escenario/Paredes" unique_id=945311427 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, -3)
 
-[node name="wall5" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall5" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1401650426 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, -2)
 
-[node name="wall6" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall6" parent="NavigationRegion3D/Escenario/Paredes" unique_id=499168922 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, -1)
 
-[node name="wall7" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall7" parent="NavigationRegion3D/Escenario/Paredes" unique_id=414199823 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, 0)
 
-[node name="wall8" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall8" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1789040685 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, 1)
 
-[node name="wall9" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall9" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1697649221 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, 2)
 
-[node name="wall20" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall20" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1023613582 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, 3)
 
-[node name="wall21" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall21" parent="NavigationRegion3D/Escenario/Paredes" unique_id=2014543786 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, 4)
 
-[node name="wall-corner5" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("6_ryguw")]
+[node name="wall-corner5" parent="NavigationRegion3D/Escenario/Paredes" unique_id=361069916 instance=ExtResource("6_ryguw")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5, 0, 5)
 
-[node name="wall-window2" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+[node name="wall-window2" parent="NavigationRegion3D/Escenario/Paredes" unique_id=67343165 instance=ExtResource("8_1u8w0")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4, 0, 5)
 
-[node name="wall-window3" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+[node name="wall-window3" parent="NavigationRegion3D/Escenario/Paredes" unique_id=787966530 instance=ExtResource("8_1u8w0")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4, 0, 5)
 
-[node name="wall-window4" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+[node name="wall-window4" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1434980707 instance=ExtResource("8_1u8w0")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 5)
 
-[node name="wall22" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall22" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1357978188 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1, 0, 5)
 
-[node name="wall23" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall23" parent="NavigationRegion3D/Escenario/Paredes" unique_id=730272345 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3, 0, 5)
 
-[node name="wall24" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall24" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1567651270 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 0, 5)
 
-[node name="wall25" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall25" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1193479006 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1, 0, 5)
 
-[node name="wall26" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall26" parent="NavigationRegion3D/Escenario/Paredes" unique_id=407049413 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, 5)
 
-[node name="wall27" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("7_d13ii")]
+[node name="wall27" parent="NavigationRegion3D/Escenario/Paredes" unique_id=783675689 instance=ExtResource("7_d13ii")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 0, 5)
 
-[node name="wall-door-rotate2" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("9_0odxb")]
+[node name="wall-door-rotate2" parent="NavigationRegion3D/Escenario/Paredes" unique_id=945396802 instance=ExtResource("9_0odxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -5)
 
-[node name="wall-window5" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D/Escenario/Paredes/wall-door-rotate2" unique_id=962420694 groups=["puerta_salida"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2976246)
+
+[node name="wall-window5" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1953367612 instance=ExtResource("8_1u8w0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
 
-[node name="wall-window6" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+[node name="wall-window6" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1247312438 instance=ExtResource("8_1u8w0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
 
-[node name="wall-window7" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+[node name="wall-window7" parent="NavigationRegion3D/Escenario/Paredes" unique_id=496433756 instance=ExtResource("8_1u8w0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
-[node name="wall-window8" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+[node name="wall-window8" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1358050795 instance=ExtResource("8_1u8w0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
 
-[node name="wall-window9" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+[node name="wall-window9" parent="NavigationRegion3D/Escenario/Paredes" unique_id=1565830543 instance=ExtResource("8_1u8w0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
 
-[node name="wall-window10" parent="NavigationRegion3D/Escenario/Paredes" instance=ExtResource("8_1u8w0")]
+[node name="wall-window10" parent="NavigationRegion3D/Escenario/Paredes" unique_id=979584836 instance=ExtResource("8_1u8w0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5)
 
-[node name="VFX" type="Node" parent="."]
+[node name="VFX" type="Node" parent="." unique_id=592029979]
 
-[node name="Frio" type="Node3D" parent="VFX"]
+[node name="Frio" type="Node3D" parent="VFX" unique_id=1707972992]
 
-[node name="Neblina" type="GPUParticles3D" parent="VFX/Frio"]
+[node name="Neblina" type="GPUParticles3D" parent="VFX/Frio" unique_id=1655935884]
 
-[node name="Destellos" type="GPUParticles3D" parent="VFX/Frio"]
+[node name="Destellos" type="GPUParticles3D" parent="VFX/Frio" unique_id=502898801]
 
-[node name="Nieve" type="GPUParticles3D" parent="VFX/Frio"]
+[node name="Nieve" type="GPUParticles3D" parent="VFX/Frio" unique_id=1505876863]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9962063, 0.24907285, 0)
 process_material = SubResource("ParticleProcessMaterial_h1bgf")
 draw_pass_1 = SubResource("QuadMesh_fevyy")
 
-[node name="Dinero" type="Node3D" parent="VFX"]
+[node name="Dinero" type="Node3D" parent="VFX" unique_id=1567952586]
 
-[node name="HitboxesParedes" type="Node" parent="."]
+[node name="HitboxesParedes" type="Node" parent="." unique_id=2118408403]
 
-[node name="collision_floor" type="StaticBody3D" parent="HitboxesParedes"]
+[node name="collision_floor" type="StaticBody3D" parent="HitboxesParedes" unique_id=119259947]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_floor" unique_id=620558520]
 shape = SubResource("WorldBoundaryShape3D_vvmd2")
 
-[node name="collision_left_wall" type="StaticBody3D" parent="HitboxesParedes"]
+[node name="collision_left_wall" type="StaticBody3D" parent="HitboxesParedes" unique_id=1926978007]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_left_wall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_left_wall" unique_id=1915357776]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 4.76591, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_vvmd2")
 
-[node name="collision_right_wall" type="StaticBody3D" parent="HitboxesParedes"]
+[node name="collision_right_wall" type="StaticBody3D" parent="HitboxesParedes" unique_id=474619236]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_right_wall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_right_wall" unique_id=1165593671]
 transform = Transform3D(0.0022606584, 0.9999966, -0.0012844437, 0.999997, -0.002259404, 0.0009713156, 0.0009683923, -0.001286649, -0.9999987, -4.7677927, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_vvmd2")
 
-[node name="collision_back_wall" type="StaticBody3D" parent="HitboxesParedes"]
+[node name="collision_back_wall" type="StaticBody3D" parent="HitboxesParedes" unique_id=604576128]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_back_wall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_back_wall" unique_id=501459592]
 transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 0, 0, 4.7561984)
 shape = SubResource("WorldBoundaryShape3D_vvmd2")
 
-[node name="collision_front_1" type="StaticBody3D" parent="HitboxesParedes"]
+[node name="collision_front_1" type="StaticBody3D" parent="HitboxesParedes" unique_id=628288747]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_front_1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_front_1" unique_id=1681207582]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1811523, 0.44396973, -5.0001373)
 shape = SubResource("BoxShape3D_uot50")
 
-[node name="collision_front_2" type="StaticBody3D" parent="HitboxesParedes"]
+[node name="collision_front_2" type="StaticBody3D" parent="HitboxesParedes" unique_id=1307046385]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_front_2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_front_2" unique_id=23631643]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.145996, 0.44989014, -4.991089)
 shape = SubResource("BoxShape3D_qyfoh")
 
-[node name="collision_door" type="StaticBody3D" parent="HitboxesParedes"]
+[node name="collision_door" type="StaticBody3D" parent="HitboxesParedes" unique_id=1585760613]
 collision_layer = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_door"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxesParedes/collision_door" unique_id=20476956]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0125759, 0.49224854, -4.986691)
 shape = SubResource("BoxShape3D_l0sm3")
 
-[node name="Extras" type="Node" parent="."]
+[node name="Extras" type="Node" parent="." unique_id=675946251]
 
-[node name="PuntoSpawn" type="Marker3D" parent="Extras"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -5)
+[node name="PuntoSpawn" type="Marker3D" parent="Extras" unique_id=647293820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -5.1781883)
 
-[node name="TimerSpawneo" type="Timer" parent="Extras"]
-wait_time = 6.0
+[node name="TimerSpawneo" type="Timer" parent="Extras" unique_id=332274648]
+wait_time = 5.0
 autostart = true
 
-[node name="MusicaFondo" type="AudioStreamPlayer" parent="."]
+[node name="MusicaFondo" type="AudioStreamPlayer" parent="." unique_id=1241389645]
 stream = ExtResource("17_h1bgf")
 volume_db = -11.45
 autoplay = true
